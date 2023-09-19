@@ -2,7 +2,8 @@ from functools import cached_property
 from http.cookies import SimpleCookie
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qsl, urlparse
-import re 
+import re
+
 
 class WebRequestHandler(BaseHTTPRequestHandler):
     @cached_property
@@ -15,11 +16,10 @@ class WebRequestHandler(BaseHTTPRequestHandler):
             method_name, dict_params = method
             method = getattr(self, method_name)
             method(**dict_params)
-            return 
+            return
         else:
-                self.send_error( 404, "Not Found") 
+            self.send_error(404, "Not Found")
 
-    
     def get_book(self, book_id):
         self.send_response(200)
         self.send_header("Content-Type", "text/html")
@@ -32,7 +32,6 @@ class WebRequestHandler(BaseHTTPRequestHandler):
 """
         self.wfile.write(response.encode("utf-8"))
 
-
     def get_index(self):
         self.send_response(200)
         self.send_header("Content-Type", "text/html")
@@ -44,7 +43,6 @@ class WebRequestHandler(BaseHTTPRequestHandler):
     <p>  HEADERS: {self.headers}      </p>
 """
         self.wfile.write(response.encode("utf-8"))
-        
 
     def get_method(self, path):
         for pattern, method in mapping:
@@ -52,10 +50,11 @@ class WebRequestHandler(BaseHTTPRequestHandler):
             if match:
                 return (method, match.groupdict())
 
+
 mapping = [
             (r'^/Book/(?P<book_id>\d+)$', 'get_book'),
             (r'^/$', 'get_index')
-        ] 
+        ]
 
 books = {
             '1':"""
