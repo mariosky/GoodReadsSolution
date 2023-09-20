@@ -75,8 +75,9 @@ conoce como Full-Text search.
 En este caso la forma debe realizar a una petición `GET` y debes extraer los
 términos del `QueryString`.
 
-Herramientas:
+Bibliografía:
 
+* [Librería de redis para python](https://redis-py.readthedocs.io/en/stable/)
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 * [Redis](https://redis.com/glossary/full-text-search/)
 
