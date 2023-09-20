@@ -55,21 +55,24 @@ class WebRequestHandler(BaseHTTPRequestHandler):
 
     def get_book(self, book_id):
         session_id = self.get_book_session()
-        book_id = self.get_book_recomendation(session_id, book_id)
-        self.send_response(200)
-        self.send_header("Content-Type", "text/html")
-        self.set_book_cookie(session_id)
-        self.end_headers()
-        response = f"""
-         {r.get(book_id).decode()}
-    <p>  Ruta: {self.path}            </p>
-    <p>  URL: {self.url}              </p>
-    <p>  HEADERS: {self.headers}      </p>
-    <p>  SESSION: {session_id}      </p>
-    <p>  Recomendación: {book_id}      </p>
-
+        book_recomendation = self.get_book_recomendation(session_id, book_id)
+        book_page = r.get(book_id)
+        if book_page:
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html")
+            self.set_book_cookie(session_id)
+            self.end_headers()
+            response = f"""
+            {book_page.decode()}
+        <p>  Ruta: {self.path}            </p>
+        <p>  URL: {self.url}              </p>
+        <p>  HEADERS: {self.headers}      </p>
+        <p>  SESSION: {session_id}      </p>
+        <p>  Recomendación: {book_recomendation}      </p>
 """
-        self.wfile.write(response.encode("utf-8"))
+            self.wfile.write(response.encode("utf-8"))
+        else:
+            self.send_error(404, "Not Found")
 
     def get_index(self):
         session_id = self.get_book_session()
