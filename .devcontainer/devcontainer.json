@@ -1,6 +1,8 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {"ghcr.io/itsmechlark/features/redis-server:1": {}
+  "features": {"ghcr.io/itsmechlark/features/redis-server:1": {}, 
+	   "ghcr.io/akhildevelops/devcontainer-features/pip:latest": {"packages":"redis"}
+              
 },
 "customizations": {
 	"vscode": {
