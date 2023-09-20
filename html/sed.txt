@@ -1,0 +1,1 @@
+sed -r  's/book([0-9]+)\.html/\1/g' index.html
