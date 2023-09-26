@@ -27,7 +27,7 @@ class WebRequestHandler(BaseHTTPRequestHandler):
 
     def get_response(self, books):
         return f"""
-    <h1> Hola Web </h1>
+    <h1> Busqueda </h1>
     <form action="/" method="get">
     	<label for="q">  Búsqueda </label>
     	<input type="text" name="q" required />
