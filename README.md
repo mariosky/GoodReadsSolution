@@ -1,5 +1,5 @@
 ## Proyecto 1 
-
+## Link del video: https://youtu.be/HqBodvqv1-o
 En este primer proyecto vamos a desarrollar una applicación web sencilla
 utilizando solamente la librería estándar de python y *Redis* un almacen de
 datos en memoria.
