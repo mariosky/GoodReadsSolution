@@ -1,5 +1,8 @@
 {
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontSize": 18,
-    "terminal.integrated.fontWeight": "normal"
+    "terminal.integrated.fontWeight": "normal",
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
+    ]
 }
